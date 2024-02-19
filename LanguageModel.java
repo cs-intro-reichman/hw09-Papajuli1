@@ -101,7 +101,7 @@ public class LanguageModel {
             return initialText;
         String window = initialText.substring(initialText.length() - windowLength);
         String text = window;
-        while (text.length() < textLength) {
+        while (text.length() < textLength + windowLength) {
             List current = CharDataMap.get(window);
             if (current == null)
                 return text;
