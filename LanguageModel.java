@@ -97,14 +97,14 @@ public class LanguageModel {
      * @return the generated text
      */
     public String generate(String initialText, int textLength) {
-        if (initialText.length() < textLength)
+        if (initialText.length() < windowLength)
             return initialText;
         String window = initialText.substring(initialText.length() - windowLength);
         String text = window;
-        while (text.length() < textLength + windowLength) {
+        while (text.length() < textLength) {
             List current = CharDataMap.get(window);
             if (current == null)
-                break;
+                return text;
             text += getRandomChar(current);
             window = text.substring(text.length() - windowLength);
         }
