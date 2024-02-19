@@ -104,7 +104,7 @@ public class LanguageModel {
         while (text.length() < textLength + windowLength) {
             List current = CharDataMap.get(window);
             if (current == null)
-                return text;
+                break;
             text += getRandomChar(current);
             window = text.substring(text.length() - windowLength);
         }
